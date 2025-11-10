@@ -5,10 +5,10 @@ import { QuartzEmitterPlugin } from "../types"
 import spaRouterScript from "../../components/scripts/spa.inline"
 // @ts-ignore
 import popoverScript from "../../components/scripts/popover.inline"
-import styles from "../../styles/custom.scss"
 import popoverStyle from "../../components/styles/popover.scss"
 import { BuildCtx } from "../../util/ctx"
 import { QuartzComponent } from "../../components/types"
+import styles from "../../styles/custom.scss"
 import {
   googleFontHref,
   googleFontSubsetHref,

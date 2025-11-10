@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Lumpy Space Spaghetti",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -23,16 +23,16 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
+        header: "Indie Flower",
+        body: "Caveat",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
+          light: "#f0e491",
+          lightgray: "#bbc863",
+          gray: "#658c58",
+          darkgray: "#31694e",
           dark: "#2b2b2b",
           secondary: "#284b63",
           tertiary: "#84a59d",
@@ -40,11 +40,11 @@ const config: QuartzConfig = {
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
+          light: "#2b2b2b",
+          lightgray: "#31694e",
+          gray: "#658c58",
+          darkgray: "#bbc863",
+          dark: "#f0e491",
           secondary: "#7b97aa",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
@@ -55,6 +55,7 @@ const config: QuartzConfig = {
   },
   plugins: {
     transformers: [
+      Plugin.HardLineBreaks(),
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "git", "filesystem"],
