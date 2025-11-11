@@ -7,4 +7,4 @@ I don't post much, but I have youtube  channel at https://www.youtube.com/@Lumpy
 
 Also, if you want to help support me you can [Buy Me a Coffee](https://buymeacoffee.com/lumpyspaghettispace).
 
-<img src="Lumpy.png" style="width: 30%; height: auto;">
+<img src="Lumpy.png" style="width: 20%; height: auto;">
