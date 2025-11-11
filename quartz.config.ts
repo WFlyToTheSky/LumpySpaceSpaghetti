@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Lumpy Spaghetti Space",
-    pageTitleSuffix: "",
+    pageTitleSuffix: " - Lumpy Spaghetti Space",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
