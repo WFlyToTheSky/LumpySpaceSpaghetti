@@ -1,0 +1,3 @@
+
+![[October 1st - Moustache.jpg]]
+![[October 2nd - Weave.jpg]]![[October 3rd - Crown.jpg]]![[October 4th - Murky.jpg]]![[October 5th - Deer.jpg]]![[October 6th - Pierce.jpg]]![[October 7th - Starfish.jpg]]![[October 8th - Reckless.jpg]]![[October 9th - Heavy.jpg]]![[October 10th - Sweep.jpg]]![[October 11th - Sting.jpg]]![[October 12th - Shredded.jpg]]![[October 13th - Drink.jpg]]![[October 14th - Trunk.jpg]]
