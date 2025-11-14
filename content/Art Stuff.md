@@ -1,5 +1,14 @@
 I mostly just draw random things which I put here, also if you want to hear about the stuff I've made recently look at my [[Blog|blog]]. Also you should look at my [[Inktober 2025| Inktobers]], there were too many too put here so I made a separate page.
 
+
+
+## Lumpy - November 13th, 2025
+
+![[lumpy.mp4]]
+
+LSP now has an office job.
+
+
 ## Hunger - November 10th, 2025
 
 ![[Hunger.jpg]]
