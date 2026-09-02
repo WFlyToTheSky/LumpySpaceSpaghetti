@@ -24,36 +24,51 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
+      # --------------------------------------------------
+      # Build Quartz with Node 22
+      # --------------------------------------------------
+      - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
-      # Build Quartz
       - name: Install Quartz dependencies
         run: npm ci
 
       - name: Build Quartz
         run: npx quartz build
 
-      # Build TurboWarp
+      # --------------------------------------------------
+      # Build TurboWarp/Scratch GUI with Node 20
+      # --------------------------------------------------
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install TurboWarp dependencies
         working-directory: scratch-gui
-        run: npm install
+        run: npm ci
 
       - name: Build TurboWarp
         working-directory: scratch-gui
-        run: NODE_ENV=production npm run build
+        run: npm run build
+        env:
+          NODE_ENV: production
 
+      # --------------------------------------------------
       # Put TurboWarp at /turbowarp/
+      # --------------------------------------------------
       - name: Copy TurboWarp into site
         run: |
           rm -rf public/turbowarp
           mkdir -p public/turbowarp
           cp -r scratch-gui/build/* public/turbowarp/
 
-      # Upload complete website
+      # --------------------------------------------------
+      # Upload the finished site
+      # --------------------------------------------------
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
