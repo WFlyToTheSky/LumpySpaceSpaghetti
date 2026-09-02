@@ -1,44 +1,75 @@
 name: Deploy Quartz site to GitHub Pages
- 
+
 on:
   push:
     branches:
       - v4
- 
+
 permissions:
   contents: read
   pages: write
   id-token: write
- 
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
- 
+
 jobs:
   build:
     runs-on: ubuntu-22.04
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for git info
-      - uses: actions/setup-node@v4
+          fetch-depth: 0
+
+      # Node 20 works with the newer dependencies while avoiding Node 24.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - name: Install Dependencies
+          node-version: 20
+          cache: npm
+
+      # Install Quartz dependencies
+      - name: Install Quartz dependencies
         run: npm ci
+
+      # Build Quartz
       - name: Build Quartz
         run: npx quartz build
+
+      # Install TurboWarp/Scratch dependencies
+      - name: Install TurboWarp dependencies
+        working-directory: scratch-gui
+        run: npm install
+
+      # Build TurboWarp/Scratch
+      - name: Build TurboWarp
+        working-directory: scratch-gui
+        run: NODE_ENV=production npm run build
+
+      # Put the TurboWarp build inside the Quartz website
+      - name: Copy TurboWarp into site
+        run: |
+          mkdir -p public/turbowarp
+          cp -r scratch-gui/build/* public/turbowarp/
+
+      # Upload the complete site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
- 
+
   deploy:
     needs: build
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
