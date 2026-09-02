@@ -24,38 +24,36 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Node 20 works with the newer dependencies while avoiding Node 24.
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
 
-      # Install Quartz dependencies
+      # Build Quartz
       - name: Install Quartz dependencies
         run: npm ci
 
-      # Build Quartz
       - name: Build Quartz
         run: npx quartz build
 
-      # Install TurboWarp/Scratch dependencies
+      # Build TurboWarp
       - name: Install TurboWarp dependencies
         working-directory: scratch-gui
         run: npm install
 
-      # Build TurboWarp/Scratch
       - name: Build TurboWarp
         working-directory: scratch-gui
         run: NODE_ENV=production npm run build
 
-      # Put the TurboWarp build inside the Quartz website
+      # Put TurboWarp at /turbowarp/
       - name: Copy TurboWarp into site
         run: |
+          rm -rf public/turbowarp
           mkdir -p public/turbowarp
           cp -r scratch-gui/build/* public/turbowarp/
 
-      # Upload the complete site
+      # Upload complete website
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
